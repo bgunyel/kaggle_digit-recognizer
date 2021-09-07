@@ -163,4 +163,8 @@ if __name__ == '__main__':
                   'epochs': 100,
                   'validation batch size': 128,
                   'learning rate': 0.001}
+
+    t1 = time.time()
     main(parameters)
+    t2 = time.time()
+    print(f'Execution took {t2-t1} seconds...')
