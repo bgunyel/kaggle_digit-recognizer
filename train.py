@@ -91,6 +91,8 @@ def main(params):
     dataFile = params['data']
     outFolder = params['out']
 
+    plotting_enabled = params['plotting_enabled']
+
     df = pd.read_csv(dataFile)
 
     # data = df[0:1280]
@@ -140,17 +142,18 @@ def main(params):
 
     # pyplot.imshow(X[0].reshape((28, 28)), cmap="gray")
 
-    plt.plot(range(params['epochs']), trLossVector, label='Training Loss')
-    plt.plot(range(params['epochs']), vlLossVector, label='Validation Loss')
-    plt.legend(title='Loss')
-    plt.xlabel('Epoch number')
-    plt.show()
+    if plotting_enabled:
+        plt.plot(range(params['epochs']), trLossVector, label='Training Loss')
+        plt.plot(range(params['epochs']), vlLossVector, label='Validation Loss')
+        plt.legend(title='Loss')
+        plt.xlabel('Epoch number')
 
-    plt.plot(range(params['epochs']), trAccuracyVector, label='Training Accuracy')
-    plt.plot(range(params['epochs']), vlAccuracyVector, label='Validation Accuracy')
-    plt.legend(title='Accuracy')
-    plt.xlabel('Epoch number')
-    plt.show()
+        plt.figure()
+        plt.plot(range(params['epochs']), trAccuracyVector, label='Training Accuracy')
+        plt.plot(range(params['epochs']), vlAccuracyVector, label='Validation Accuracy')
+        plt.legend(title='Accuracy')
+        plt.xlabel('Epoch number')
+        plt.show()
 
     dummy = -32
 
@@ -162,7 +165,8 @@ if __name__ == '__main__':
                   'batch size': 128,
                   'epochs': 100,
                   'validation batch size': 128,
-                  'learning rate': 0.001}
+                  'learning rate': 0.001,
+                  'plotting_enabled': False}
 
     t1 = time.time()
     main(parameters)
