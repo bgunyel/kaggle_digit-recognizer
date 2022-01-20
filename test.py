@@ -31,6 +31,9 @@ def main(params):
     pixelMean = 33.408935546875
     pixelStdDev = 78.6775894165039
 
+    print(f'Mean Pixel Valur: {pixelMean}')
+    print(f'Standard Deviation Pixel Value: {pixelStdDev}')
+
     X = data.to_numpy(dtype='float32')
     X = (X - pixelMean) / pixelStdDev
     del df

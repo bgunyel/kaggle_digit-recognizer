@@ -133,8 +133,7 @@ def main(params):
                                                                            trainDataLoader=train_dl,
                                                                            validationDataLoader=validation_dl,
                                                                            optimizer=optimizer,
-                                                                           numberOfEpochs=
-                                                                           params['epochs'])
+                                                                           numberOfEpochs=params['epochs'])
     t2 = time.time()
     print(f'Training took {t2 - t1} seconds')
 
